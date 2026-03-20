@@ -59,6 +59,20 @@ export default async function handler(req, res) {
     return json(res, 400, { error: 'unsupported interaction type' });
   }
 
+  const permissions = BigInt(interaction?.member?.permissions || '0');
+
+  const isAdmin = (permissions & 0x8n) === 0x8n;
+
+  if (!isAdmin) {
+    return json(res, 200, {
+      type: 4,
+      data: {
+        content: ' Du hast keine Berechtigung, diesen Befehl auszuführen.',
+        flags: 64,
+      },
+    });
+  }
+
   if (DISCORD_ALLOWED_GUILD_ID && interaction.guild_id !== DISCORD_ALLOWED_GUILD_ID) {
     return json(res, 200, {
       type: 4,
