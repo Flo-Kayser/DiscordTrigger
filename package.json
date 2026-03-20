@@ -1,0 +1,15 @@
+{
+  "name": "discord-trigger-api",
+  "private": "true",
+  "type": "module",
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "prettier --check ."
+  },
+  "dependencies": {
+    "tweetnacl": "^1.0.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1"
+  }
+}
