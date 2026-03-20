@@ -89,7 +89,8 @@ export default async function handler(req, res) {
     });
   }
 
-  const environment = getOptionValue(interaction, 'environment', 'staging');
+  const environment =
+    interaction?.data?.options?.find((o) => o.name === 'environment')?.value || 'staging';
   const requestedBy =
     interaction?.member?.user?.username || interaction?.user?.username || 'discord';
 
