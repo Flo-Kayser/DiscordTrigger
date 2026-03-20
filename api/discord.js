@@ -79,7 +79,7 @@ export default async function handler(req, res) {
   }
 
   const commandName = interaction?.data?.name;
-  if (commandName !== 'run-action') {
+  if (commandName !== 'update') {
     return json(res, 200, {
       type: 4,
       data: {
